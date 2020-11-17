@@ -1,0 +1,87 @@
+create table socios(
+soc_cod integer not null
+,soc_nombre varchar(45)
+,soc_apellido varchar(45)
+,soc_telefono varchar(45)
+,soc_fechanac date
+, primary key(soc_cod))
+
+create table empleados(
+emp_cod integer not null
+,emp_nombre varchar(45)
+,emp_apellido varchar(45)
+,emp_tel varchar(20)
+,emp_direc varchar(45)
+,primary key(emp_cod))
+
+create table alquiler(
+alq_nro integer not null
+,alq_fecha date
+,emp_cod integer not null
+,soc_cod integer not null
+,primary key(alq_nro)
+,foreign key(emp_cod) references empleados(emp_cod)
+on delete restrict on update cascade
+,foreign key(soc_cod) references socios(soc_cod)
+on delete restrict on update cascade);
+
+create table tipo_pelicula(
+tp_cod integer not null
+,tp_descri varchar(45)not null
+,primary key(tp_cod))
+
+create table peliculas(
+pel_cod integer not null
+,pel_nombre varchar(45)not null
+,pel_duracion time not null
+,pel_precio integer not null
+,pel_existencia integer not null
+,tp_cod integer not null
+,primary key(pel_cod)
+,foreign key(tp_cod)references tipo_pelicula(tp_cod)
+on delete restrict on update cascade)
+
+create table detalle_alquiler(
+alq_nro integer not null
+,pel_cod integer not null
+,det_cantidad int not null
+,det_fechadevolver date
+,det_fechadevuelto date
+,primary key(alq_nro,pel_cod)
+,foreign key(alq_nro)references alquiler(alq_nro)
+on delete restrict on update cascade
+,foreign key(pel_cod)references peliculas(pel_cod)
+on delete restrict on update cascade)
+
+insert into socios(
+soc_cod,soc_nombre,soc_apellido,
+soc_telefono,soc_fechanac) values
+(1,'Sara','Franco','777777','11/06/1991');
+
+insert into empleados(emp_cod,emp_nombre,emp_apellido,
+emp_tel,emp_direc)values
+(1,'Osmar','Gonzalez','452753','Raulcel');
+
+insert into tipo_pelicula(tp_cod,tp_descri)values
+(1,'Terror'),
+(2,'Romantica'),
+(3,'Comedia');
+
+insert into peliculas(pel_cod,pel_nombre,pel_duracion,pel_precio,pel_existencia,
+tp_cod) values
+(1,'Me Before You','2:00:00',5000,2,1),
+(2,'Las Vacaciones de Ms Beanz','2:30:00',10000,1,2);
+
+select * from peliculas
+
+insert into alquiler(alq_nro,alq_fecha,emp_cod,soc_cod) values
+(1,'17/11/2020',1,1),
+(2,'18/11/2020',1,1);
+
+
+insert into detalle_alquiler(alq_nro,pel_cod,det_cantidad,
+det_fechadevolver,det_fechadevuelto)values(1,1,1,'27/06/2020',null);
+
+insert into detalle_alquiler(alq_nro,pel_cod,det_cantidad,
+det_fechadevolver,det_fechadevuelto)values(2,2,2,'27/06/2020',null);
+select * from detalle_alquiler 

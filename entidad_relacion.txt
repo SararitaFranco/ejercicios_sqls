@@ -1,0 +1,44 @@
+Pregunta en que caso se usa la relacion 
+identdificable y no identificable 
+_A que se llama relacion?
+Relacion se llama a la asociacion
+entre entidades.
+
+_Que es un entidad?
+Una entidad es un objeto imaginado o real
+sobre o imaginado, acerca de la cual existe 
+nececidad de informacion que se va a conocer
+o mantener.
+
+_Que es el diagrama entidad relacion?
+Es la representacion gradica de de las entidades y las relaciones 
+existente entre cada entidad, las relaciones grafican los requerimientos minimos 
+y maximos (cardinalidad) que definen las reglas del negocio
+
+_Que entiendes por transacciones
+ y carateristicas que debe cumplir?
+Una transaccion es una secuencia de intrucciones 
+de manipulacion de la base de datos que constituye
+una unidad logica de ejecucion. las caracteristicas
+que debe satisfacer las propiedades de atomicidad, consitencia, 
+aislamiento y durabilidad(ACID)
+
+_Defina tipo de Entidades 
+*Entidad independiente: es una identidad cuyas 
+instancias pueden identificarse singularmente 
+sin determinar su realcion a otra entidad, pero 
+cuando ciertas entidades se relacionan con otras
+pueden identificarse instancias de entidades 
+que dependen de otra.
+*Entidad dependiente: es una entidad cuyas instacias
+no pueden identificarse de forma singular sin determinar
+su relacion a otra entidad o entidades 
+
+_Cita los tipos de cardinalidades
+*Uno a Uno 
+*Uno a Varios
+*Varios a Uno
+* Varios a Varios o Varios a Muchos 
+
+_Diferencia entre relacion identificable
+y no identificable

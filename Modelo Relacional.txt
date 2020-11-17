@@ -1,0 +1,43 @@
+_Que entiendes por reglas de integridad de datos?
+La integridad de datos se refiere a la correcion
+y completitud de los datos de la base de datos.
+A no ser que tome las medidas necesarias para proteger
+los datos, es posible que se corrompan.
+
+_Que define la integridad de entidad?
+La integridad de entidad define una fila como
+unica para una entidad, es la que fuerza la
+integridad de la columna o columnas de los 
+identificadores o la clave principal de una 
+entidad mediante indices primarios o PRIMARY KEY
+(PK) y claves compuestas. 
+
+_A que se refiere la integridad referencial y que protege?
+La integirdad referencial es un estado de en el 
+que todos los valores de claves externas de una 
+Base de datos son validos. Para que una clave externa 
+sea valida debe contener un valor de clave existente
+para las columnas de clave primaria a las que hace 
+referncia la clave externa o extranjera.
+
+_Cuando se fuerza la integridad referencial que se logra?
+*Agregar registros en una tabla relacionada si no hay
+ningun registro asociado en la tabla pricipal.
+*Cambiar valores en una tabla principal de manera que
+queden registros huerfanos en una tabla relacionada.
+*Eliminar registros de una tabla principal cuando hay registros 
+relacionados coincidentes.
+
+_Que son los procedimientos almacenados?
+Un procedimiento almacenado (stored procedure) es un 
+programa (o procedimiento) almacenado fisicamente en una
+base de datos.
+las funciones estan compuestas por un conjunti de sentencias
+Sql que se almacena en la Base de Datos. Estan logicamente 
+agrupados para realizar una o varias tareas. 
+
+_Que son disparadores o desencadenadores?
+Es un tipo especial de procedimiento almacenado 
+que se ejecuta automaticamnte como parte de una istruccion
+de modificacion de datos. 
+ 

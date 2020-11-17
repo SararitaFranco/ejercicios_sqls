@@ -1,0 +1,96 @@
+--Creacion de la base de datos
+create database Hospital
+
+--Creacion de Tablas 
+create table paciente(
+nss integer not null
+,pac_ci varchar (15) not null
+,pac_nombre varchar (60)
+,pac_apellido varchar (60) not null
+,primary key (nss)
+
+);
+create table planta (
+pla_nro serial not null
+,pla_descri varchar (60) unique not null
+, primary key (pla_nro)
+
+);
+create table diagnostico(
+dia_cod integer not null
+,dia_descri varchar (60) not null
+,primary key (dia_cod)
+);
+
+create table medico(
+med_cod integer not null
+,med_nombre varchar(60) not null
+,med_apellido varchar (60) not null
+,primary key (med_cod)
+
+);
+
+create table cama(
+cam_nro integer not null
+,pla_nro integer not null
+,cam_descri varchar(60)
+,foreign key (pla_nro)references planta (pla_nro)
+on delete restrict on update cascade
+,primary key (cam_nro, pla_nro)
+
+);
+
+create table cam_paciente (
+cam_nro integer not null
+,pla_nro integer not null
+,nss integer not null
+,fecha_cam date not null
+,foreign key (cam_nro, pla_nro) references cama (cam_nro, pla_nro)
+on delete restrict on update cascade
+,foreign key (nss) references paciente (nss) 
+on delete restrict on update cascade
+,primary key (cam_nro, pla_nro, nss)
+
+);
+
+create table tarjetas (
+tar_cod integer not null
+,tar_entrada time not null
+,tar_salida time not null
+,nss integer not null
+,primary key (tar_cod)
+,foreign key (nss)
+references paciente (nss) on delete restrict 
+on update cascade
+);
+
+create table paciente_medico (
+med_cod integer not null
+,nss integer not null
+,fecha_atencion date not null
+,hora_atencion time not null
+,primary key (med_cod, nss)
+,foreign key (med_cod) references medico (med_cod) 
+on delete restrict on update cascade
+,foreign key (nss) references paciente (nss) 
+on delete restrict on update cascade 
+
+);
+
+create table med_pac_diag(
+dia_cod integer not null
+,med_cod integer not null
+,nss integer not null
+,fecha_diag date not null
+,primary key (dia_cod, med_cod, nss)
+,foreign key (dia_cod)references diagnostico (dia_cod)
+on delete restrict on update cascade
+,foreign key (med_cod)references medico (med_cod)
+on delete restrict on update cascade,
+foreign key (nss) references paciente (nss)
+on delete restrict on update cascade 
+
+);
+
+
+
